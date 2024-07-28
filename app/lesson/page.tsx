@@ -22,9 +22,7 @@ const LessonPage  = async () =>{
         .length / lesson.challenges.length *100
 
     return(
-        <Quiz 
-        
-        />
+        <div></div>
     );
 };
 
