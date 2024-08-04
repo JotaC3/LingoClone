@@ -28,7 +28,7 @@ const LessonPage = async () => {
                 initialLessonId={lesson.id}
                 initialLessonChallenges={lesson.challenges}
                 initialHearts={userProgress.hearts}
-                intialPercentage={initialPrcentage}
+                initialPercentage={initialPrcentage}
                 userSubscription={null}
                 />
         

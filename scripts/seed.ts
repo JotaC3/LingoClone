@@ -94,19 +94,26 @@ const main = async () =>{
                 type: 'SELCT',
                 order: 1, 
                 question: 'Qual é "O Homem" ?'
-            },/* ,
+            },
             {
                 id: 2,
-                lessonId: 2, // Essa é a lição chamada Verbs
-                type: 'SELCT',
+                lessonId: 1, 
+                type: 'ASSIST',
                 order: 2,
-                question: 'Marque o verbo  "Correr"?'
-            } */
+                question: '"O Homem"'
+            },
+            {
+                id: 3                               ,
+                lessonId: 1, 
+                type: 'SELCT',
+                order: 3,
+                question: 'Qual desse é o Robo?'
+            }
         ]);
 
+        //challenge 1
         await db.insert(schema.challengeOptions).values([
             {
-                id: 1,
                 challengeId: 1,
                 imageSrc: '/man.svg',
                 correct: true,
@@ -114,7 +121,6 @@ const main = async () =>{
                 audioSrc: '/es_man.mp3'
             },
             {
-                id: 2,
                 challengeId: 1,
                 imageSrc: '/woman.svg',
                 correct: false,
@@ -122,7 +128,6 @@ const main = async () =>{
                 audioSrc: '/es_woman.mp3'
             },
             {
-                id: 3,
                 challengeId: 1,
                 imageSrc: '/robot.svg',
                 correct: false,
@@ -131,6 +136,78 @@ const main = async () =>{
             }
         ]);
 
+        //challenge 2
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 2,
+                correct: true,
+                text: 'el ombre',
+                audioSrc: '/es_man.mp3'
+            },
+            {
+                challengeId: 2,
+                correct: false,
+                text: 'la muler',
+                audioSrc: '/es_woman.mp3'
+            },
+            {
+                challengeId: 2,
+                correct: false,
+                text: 'el roboto',
+                audioSrc: '/es_robot.mp3'
+            }
+        ]);
+
+        //challenge 3
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 3,
+                imageSrc: '/man.svg',
+                correct: false,
+                text: 'el ombre',
+                audioSrc: '/es_man.mp3'
+            },
+            {
+                challengeId: 3,
+                imageSrc: '/woman.svg',
+                correct: false,
+                text: 'la muler',
+                audioSrc: '/es_woman.mp3'
+            },
+            {
+                challengeId: 3,
+                imageSrc: '/robot.svg',
+                correct: true,
+                text: 'el roboto',
+                audioSrc: '/es_robot.mp3'
+            }
+        ]);
+        
+
+        // outro
+        await db.insert(schema.challenges).values([
+            {
+                id: 4,
+                lessonId: 2, //verbs
+                type: 'SELCT',
+                order: 2, //verbs 
+                question: 'Qual é "O Homem" ?'
+            },
+            {
+                id: 5,
+                lessonId: 2, //verbs 
+                type: 'ASSIST',
+                order: 2,
+                question: '"O Homem"'
+            },
+            {
+                id: 6                               ,
+                lessonId: 2, //verbs
+                type: 'SELCT',
+                order: 3,
+                question: 'Qual desse é o Robo?'
+            }
+        ]);
         console.log("Seeding finshed--------------------------------");
         
         
