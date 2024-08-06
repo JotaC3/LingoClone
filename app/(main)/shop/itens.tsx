@@ -2,11 +2,10 @@
 
 import { refillHearts } from "@/actions/user-progress";
 import { Button } from "@/components/ui/button";
+import { pointsToRefil } from "@/constants";
 import Image from "next/image";
 import { startTransition, useTransition } from "react";
 import { toast } from "sonner";
-
-const pointsToRefil = 10;
 
 type Props = {
     hearts: number;

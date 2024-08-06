@@ -5,8 +5,10 @@ import { getuserProgress } from "@/db/queries";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Items } from "./itens";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
-const ShopPage = async () =>{
+const ShopPage = async () => {
     const UserProgressData = getuserProgress();
 
     const [
@@ -15,28 +17,30 @@ const ShopPage = async () =>{
         UserProgressData,
     ])
 
-    if(!userProgress || !userProgress.activeCourse){
+    if (!userProgress || !userProgress.activeCourse) {
         redirect('/courses');
     }
-    
 
-    return(
+
+    return (
         <div className="flex  flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
-                <UserProgress 
-                    activeCourse = {userProgress.activeCourse}
+                <UserProgress
+                    activeCourse={userProgress.activeCourse}
                     hearts={userProgress.hearts}
-                    points= {userProgress.points}
-                    hasActiveSubscriprion= {false}
+                    points={userProgress.points}
+                    hasActiveSubscriprion={false}
                 />
+                <Promo />
+                <Quests points={userProgress.points}/>
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center">
-                    <Image 
+                    <Image
                         src='/shop.svg'
                         alt="Shop"
                         height={90}
-                        width={90} 
+                        width={90}
                     />
                     <h1 className="text-center font-bold text-neutral-800 text-2xl my-6 ">
                         Compras
@@ -47,7 +51,7 @@ const ShopPage = async () =>{
                     <Items
                         hearts={userProgress.hearts}
                         points={userProgress.points}
-                        hasActiveSubscription ={false}
+                        hasActiveSubscription={false}
                     />
                 </div>
             </FeedWrapper>

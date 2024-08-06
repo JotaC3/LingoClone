@@ -6,6 +6,8 @@ import { title } from "process";
 import { getCourseProgress, getLessonPercentage, getUnits, getuserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
 import { Unit } from "./unit";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 //title: userProgress.activeCourse.title, imageSrc: userProgress.activeCourse.ImageSrc
 const LearnPage = async () => {
     const userProgressData = await getuserProgress();
@@ -13,7 +15,7 @@ const LearnPage = async () => {
     const lessonPercentageData = await getLessonPercentage();
     const unitsData = getUnits();
 
-    
+
     const [
         userProgress,
         units,
@@ -30,7 +32,7 @@ const LearnPage = async () => {
     if (!userProgress || !userProgress.activeCourse) {
         redirect("/courses");
     }
-    if(!courseProgress){
+    if (!courseProgress) {
         redirect('/courses');
     }
 
@@ -41,22 +43,24 @@ const LearnPage = async () => {
                     activeCourse={userProgress.activeCourse}
                     hearts={userProgress.hearts}
                     points={userProgress.points}
-                    hasActiveSubscriprion={false} 
+                    hasActiveSubscriprion={false}
                 />
+                <Promo />
+                <Quests points={userProgress.points}/>
             </StickyWrapper>
             <div className="flex-1">
                 <FeedWrapper>
                     <Header title={userProgress.activeCourse.title} />
-                    {units.map((unit) =>(
+                    {units.map((unit) => (
                         <div key={unit.id} className="mb-10">
-                            <Unit 
-                                id = {unit.id}
-                                order= {unit.order}
-                                description= {unit.Description}
-                                title = {unit.title}
-                                lessons = {unit.lessons}
-                                activeLesson = {courseProgress.activeLesson}
-                                activeLessonPercentage = {lessonPercentage}
+                            <Unit
+                                id={unit.id}
+                                order={unit.order}
+                                description={unit.Description}
+                                title={unit.title}
+                                lessons={unit.lessons}
+                                activeLesson={courseProgress.activeLesson}
+                                activeLessonPercentage={lessonPercentage}
                             />
                         </div>
                     ))}

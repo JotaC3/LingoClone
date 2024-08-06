@@ -117,3 +117,12 @@ export const userProgressRelations = relations(userProgress, ({one}) => ({
         references: [courses.id]
     }),
 }));
+
+/* a partir do 8:35 do vídeo Build a Duolingo Clone With Nextjs, React, Drizzle, Stripe (2024)
+
+export const userSubscription = pgTable('user_subscription',{
+     id:serial('id').primaryKey(),
+     userId: serial('user_id').notNull().unique(),
+     stripeCustomerId: text('stripe_costumer_id').notNull().unique(),
+     
+}) */

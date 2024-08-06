@@ -1,5 +1,6 @@
 "use server";
 
+import { pointsToRefil } from "@/constants";
 import db from "@/db/drizzle";
 import { getCourseById, getuserProgress } from "@/db/queries";
 import { challengeOptions, challengeProgress, challenges, userProgress } from "@/db/schema";
@@ -9,7 +10,6 @@ import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const pointsToRefil = 10;
 
 export const upsertUserProgress = async (courseId: number) =>{
     const{userId} = await auth();   
@@ -26,10 +26,6 @@ export const upsertUserProgress = async (courseId: number) =>{
         throw new Error("Course Not Found");
     }
 
-    //TODO: Enable once units and lessons are added
-/*     if(!course.units.length || !course.units[0].lessons.length){
-        throw new Erro("Course is  empty")
-    } */
 
     const existingUserProgress = await getuserProgress();
 
