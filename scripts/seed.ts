@@ -25,23 +25,23 @@ const main = async () =>{
         await db.insert(schema.courses).values([
             {
                 id: 1,
-                title: "Espanhol",
-                ImageSrc: '/ESP.svg'
+                title: "Mecânica",
+                ImageSrc: '/mecanica.svg'
             },
             {
                 id: 2,
-                title: "Inglês",
-                ImageSrc: '/USA.svg'
+                title: "Eletromagnetismo",
+                ImageSrc: '/eletromag.svg'
             },
             {
                 id: 3,
-                title: "Japonês",
-                ImageSrc: '/JP.svg'
+                title: "Óptica, Ondulatória e Termologia",
+                ImageSrc: '/optica.svg'
             },
             {
                 id: 4,
-                title: "Italiano",
-                ImageSrc: '/ITL.svg'
+                title: "Todas",
+                ImageSrc: '/todas.svg'
             }
         ]);
 
@@ -50,7 +50,7 @@ const main = async () =>{
                 id: 1,
                 courseId: 1, // espanhool
                 title: 'Unidade 1',
-                Description: 'Aprenda o básico de espanhol',
+                Description: 'Aprenda o básico de física mecânica',
                 order: 1
             }
         ]);
@@ -94,21 +94,21 @@ const main = async () =>{
                 lessonId: 1,
                 type: 'SELCT',
                 order: 1, 
-                question: 'Qual é "O Homem" ?'
+                question: 'Qual das opções abaixo melhor descreve a Primeira Lei de Newton?'
             },
             {
                 id: 2,
                 lessonId: 1, 
-                type: 'ASSIST',
+                type: 'SELCT',
                 order: 2,
-                question: '"O Homem"'
+                question: ' Em um pêndulo simples, a energia potencial é máxima em qual posição?'
             },
             {
                 id: 3                               ,
                 lessonId: 1, 
                 type: 'SELCT',
                 order: 3,
-                question: 'Qual desse é o Robo?'
+                question: 'O que é conservado em uma colisão elástica?'
             }
         ]);
 
@@ -116,24 +116,18 @@ const main = async () =>{
         await db.insert(schema.challengeOptions).values([
             {
                 challengeId: 1,
-                imageSrc: '/man.svg',
+                correct: false,
+                text: 'A energia total em um sistema isolado permanece constante',
+            },
+            {
+                challengeId: 1,
+                correct: false,
+                text: 'A força necessária para mover um objeto é proporcional à sua aceleração.',
+            },
+            {
+                challengeId: 1,
                 correct: true,
-                text: 'el ombre',
-                audioSrc: '/es_man.mp3'
-            },
-            {
-                challengeId: 1,
-                imageSrc: '/woman.svg',
-                correct: false,
-                text: 'la muler',
-                audioSrc: '/es_woman.mp3'
-            },
-            {
-                challengeId: 1,
-                imageSrc: '/robot.svg',
-                correct: false,
-                text: 'el roboto',
-                audioSrc: '/es_robot.mp3'
+                text: 'Um objeto em repouso permanece em repouso a menos que uma força externa aja sobre ele.',
             }
         ]);
 
@@ -141,21 +135,18 @@ const main = async () =>{
         await db.insert(schema.challengeOptions).values([
             {
                 challengeId: 2,
+                correct: false,
+                text: ' No ponto mais baixo do movimento.',
+            },
+            {
+                challengeId: 2,
                 correct: true,
-                text: 'el ombre',
-                audioSrc: '/es_man.mp3'
+                text: 'No ponto mais alto do movimento.',
             },
             {
                 challengeId: 2,
                 correct: false,
-                text: 'la muler',
-                audioSrc: '/es_woman.mp3'
-            },
-            {
-                challengeId: 2,
-                correct: false,
-                text: 'el roboto',
-                audioSrc: '/es_robot.mp3'
+                text: 'No ponto médio do movimento.',
             }
         ]);
 
@@ -163,24 +154,18 @@ const main = async () =>{
         await db.insert(schema.challengeOptions).values([
             {
                 challengeId: 3,
-                imageSrc: '/man.svg',
                 correct: false,
-                text: 'el ombre',
-                audioSrc: '/es_man.mp3'
+                text: 'Apenas o momento linear.',
             },
             {
                 challengeId: 3,
-                imageSrc: '/woman.svg',
-                correct: false,
-                text: 'la muler',
-                audioSrc: '/es_woman.mp3'
-            },
-            {
-                challengeId: 3,
-                imageSrc: '/robot.svg',
                 correct: true,
-                text: 'el roboto',
-                audioSrc: '/es_robot.mp3'
+                text: 'O momento linear e a energia cinética.',
+            },
+            {
+                challengeId: 3,
+                correct: false,
+                text: 'Apenas a energia potencial.',
             }
         ]);
         
@@ -192,7 +177,7 @@ const main = async () =>{
                 lessonId: 2, //verbs
                 type: 'SELCT',
                 order: 2, //verbs 
-                question: 'Qual é "O Homem" ?'
+                question: 'Complete a formula: F = m × ?'
             },
             {
                 id: 5,

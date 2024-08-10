@@ -40,15 +40,16 @@ export const Footer = ({onCheck, status, disabled, lessonId}:Props) =>{
                 {/* caso marque completed */}
                 {status === "completed" &&(
                     <Button variant="default" size={ismobile ? "sm" : "lg"} onClick={() => window.location.href=`/lesson/${lessonId}`}>
-                        Pratice Again
+                        Jogar denovo
                     </Button>
                 )}
 
-                <Button disabled={disabled} className="ml-auto" onClick={onCheck} size={ismobile ? "sm" : "lg"} variant={status === "wrong" ? "danger" : "secondary"}>
-                    {status === "none" && "Check"}
-                    {status === "correct" && "Next"}
-                    {status === "wrong" && "Retry"}
-                    {status === "completed" && "Continue"}
+                
+                <Button disabled={disabled} className="ml-auto" onClick={onCheck} size={ismobile ? "sm" : "lg"} variant={status === "wrong" ? "danger" : status === "correct" ? "correct" : "primary"}>
+                    {status === "none" && "Confirmar"}
+                    {status === "correct" && "Proxima"}
+                    {status === "wrong" && "Repetir"}
+                    {status === "completed" && "Continuar"}
                 </Button>
             </div>
         </footer>

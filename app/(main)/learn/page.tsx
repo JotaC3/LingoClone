@@ -45,19 +45,18 @@ const LearnPage = async () => {
                     points={userProgress.points}
                     hasActiveSubscriprion={false}
                 />
-                <Promo />
                 <Quests points={userProgress.points}/>
             </StickyWrapper>
             <div className="flex-1">
                 <FeedWrapper>
-                    <Header title={userProgress.activeCourse.title} />
+                    <Header title= {userProgress.activeCourse.title} /> {/*Alterar: Título da página cor cinza */}
                     {units.map((unit) => (
                         <div key={unit.id} className="mb-10">
                             <Unit
                                 id={unit.id}
                                 order={unit.order}
-                                description={unit.Description}
-                                title={unit.title}
+                                description={unit.Description} /* Alterar: Descrição da unidade, componente verde (unit Banner)*/
+                                title= {unit.title} /*Alterar: Título da unidade, componente verde */
                                 lessons={unit.lessons}
                                 activeLesson={courseProgress.activeLesson}
                                 activeLessonPercentage={lessonPercentage}

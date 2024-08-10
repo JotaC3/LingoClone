@@ -36,7 +36,6 @@ const QuestsPage = async () =>{
                     points= {userProgress.points}
                     hasActiveSubscriprion= {false}
                 />
-                <Promo />
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center ">
@@ -50,7 +49,7 @@ const QuestsPage = async () =>{
                         Quests
                     </h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
-                        Veja o quão avançado você é, comparado a outros estudantes
+                        Ganhe pontos para concluir os desafios
                     </p>
                     <ul className="w-full">
                         {quests.map((quest) => {    

@@ -35,7 +35,6 @@ const LeaderBoardPage = async () =>{
                     points= {userProgress.points}
                     hasActiveSubscriprion= {false}
                 />
-                <Promo />
                 <Quests points={userProgress.points}/>
             </StickyWrapper>
             <FeedWrapper>

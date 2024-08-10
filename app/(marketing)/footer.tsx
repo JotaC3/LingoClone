@@ -6,29 +6,20 @@ export const Footer = ()=>{
         <footer className="hidden lg:block h-20 w-full border-t-2 border-slate-200 p-2">
             <div className="max-w-screen-lg  mx-auto flex items-center justify-evenly h-full">
                 <Button  size="lg" variant="ghost" className="w-full">
-                    <Image src="/BR.svg" alt="Brasil" height={32} width={40} className="mr-4 rounded-md"/>
-                    Português
+                    <Image src="/mecanica.svg" alt="Brasil" height={100} width={70} className="mr-4 rounded-md"/>
+                    Física Mecânica
                 </Button>
                 
                 <Button  size="lg" variant="ghost" className="w-full">
-                    <Image src="/USA.svg" alt="EUA" height={32} width={40} className="mr-4 rounded-md"/>
-                    Inglês
+                    <Image src="/eletromag.svg" alt="EUA" height={100} width={70} className="mr-4 rounded-md"/>
+                    Eletrodinâmica 
                 </Button>
                 
                 <Button  size="lg" variant="ghost" className="w-full">
-                    <Image src="/ESP.svg" alt="Espanha" height={32} width={40} className="mr-4 rounded-md"/>
-                    Espanhol
+                    <Image src="/optica.svg" alt="Espanha" height={100} width={70} className="mr-4 rounded-md"/>
+                    Óptica, Ondulatória e Termologia
                 </Button>
                 
-                <Button  size="lg" variant="ghost" className="w-full">
-                    <Image src="/JP.svg" alt="Japão" height={32} width={40} className="mr-4 rounded-md"/>
-                    Japonês
-                </Button>
-                
-                <Button  size="lg" variant="ghost" className="w-full">
-                    <Image src="/ITL.svg" alt="Itália" height={32} width={40} className="mr-4 rounded-md"/>
-                    Italiano
-                </Button>
 
             </div>
         </footer>

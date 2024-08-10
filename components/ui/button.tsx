@@ -17,8 +17,12 @@ const buttonVariants = cva(
         primary:"bg-sky-400 text-primary-foreground hover:bg-sky-400/90 border-sky-500 border-b-4 active:border-b-0",
         primaryOutline: "bg-white text-sky-500 hover:bg-slate-100",
 
-        secondary:"bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-b-4 active:border-b-0",
-        secondaryOutline: "bg-white text-green-500 hover:bg-slate-100",
+        //Alterar: Criar nova cor de botão secundário
+        secondary:"bg-gray-300 text-primary-foreground hover:bg-gray-300/90 border-gray-400 border-b-4 active:border-b-0",
+        secondaryOutline: "bg-white text-gray-400 hover:bg-slate-100",
+
+        correct:"bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-b-4 active:border-b-0",
+        correctOutline: "bg-white text-green-600 hover:bg-slate-100",
         
         danger:"bg-rose-500 text-primary-foreground hover:bg-rose-500/90 border-rose-600 border-b-4 active:border-b-0",
         dangerOutline: "bg-white text-rose-500 hover:bg-slate-100",
