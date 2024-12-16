@@ -2,13 +2,13 @@
 
 import db from "@/db/drizzle";
 import { getuserProgress } from "@/db/queries";
-import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { questionProgress, questions, userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server"
 import { error } from "console";
 import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
-export const upsertChallengeProgress = async(challengeId: number) =>{
+export const upsertquestionProgress = async(questionId: number) =>{
     const {userId} = await auth();
 
     if(!userId){
@@ -22,24 +22,24 @@ export const upsertChallengeProgress = async(challengeId: number) =>{
         throw new Error("User progress not found");
    }
 
-   const  challenge = await db.query.challenges.findFirst({
-    where: eq(challenges.id, challengeId)
+   const  question = await db.query.questions.findFirst({
+    where: eq(questions.id, questionId)
    })
 
-   if(!challenge){
-    throw new Error("Challenge not found");
+   if(!question){
+    throw new Error("question not found");
    }
 
-   const lessonId = challenge.lessonId;
+   const lessonId = question.lessonId;
 
-   const existingChallengeProgress = await db.query.challengeProgress.findFirst({
+   const existingquestionProgress = await db.query.questionProgress.findFirst({
     where: and(
-        eq(challengeProgress.userId, userId),
-        eq(challengeProgress.challengeId, challengeId)
+        eq(questionProgress.userId, userId),
+        eq(questionProgress.questionId, questionId)
     ),
    });
 
-   const isPraticing =  !!existingChallengeProgress;
+   const isPraticing =  !!existingquestionProgress;
 
    //TODO not if uswr has substrciption
    if(currentUserProgress.hearts === 0 && !isPraticing){
@@ -47,10 +47,10 @@ export const upsertChallengeProgress = async(challengeId: number) =>{
    }
 
    if(isPraticing){
-    await db.update(challengeProgress).set({
+    await db.update(questionProgress).set({
         completed: true,
     }).where(
-        eq(challengeProgress.id, existingChallengeProgress.id)
+        eq(questionProgress.id, existingquestionProgress.id)
     );
 
     await db.update(userProgress).set({
@@ -66,8 +66,8 @@ export const upsertChallengeProgress = async(challengeId: number) =>{
     return;
 };
 
-    await db.insert(challengeProgress).values({
-        challengeId,
+    await db.insert(questionProgress).values({
+        questionId,
         userId,
         completed: true,
     });

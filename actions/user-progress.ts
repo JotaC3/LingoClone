@@ -3,7 +3,7 @@
 import { pointsToRefil } from "@/constants";
 import db from "@/db/drizzle";
 import { getCourseById, getuserProgress } from "@/db/queries";
-import { challengeOptions, challengeProgress, challenges, userProgress } from "@/db/schema";
+import { questionOptions, questionProgress, questions, userProgress } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { error } from "console";
 import { and, eq } from "drizzle-orm";
@@ -55,7 +55,7 @@ export const upsertUserProgress = async (courseId: number) =>{
     redirect("/learn");
 };
 
-export const reduceHearts = async (challengeId: number) =>{
+export const reduceHearts = async (questionId: number) =>{
     const {userId} = await auth();
 
     if(!userId){
@@ -65,22 +65,22 @@ export const reduceHearts = async (challengeId: number) =>{
     const currentUserProgress = await getuserProgress();
     // TODO GET USER SUBSCRIPTION
 
-    const challenge = await db.query.challenges.findFirst({
-        where: eq(challenges.id, challengeId),
+    const question = await db.query.questions.findFirst({
+        where: eq(questions.id, questionId),
     });
-    if(!challenge){
-        throw new Error("Challenge not found");
+    if(!question){
+        throw new Error("question not found");
     }
-    const lessonId = challenge.lessonId; 
+    const lessonId = question.lessonId; 
 
-    const existingChallengeProgress = await db.query.challengeProgress.findFirst({
+    const existingquestionProgress = await db.query.questionProgress.findFirst({
         where: and(
-            eq(challengeProgress.userId, userId),
-            eq(challengeProgress.challengeId, challengeId),
+            eq(questionProgress.userId, userId),
+            eq(questionProgress.questionId, questionId),
         )
     });
 
-    const isPratice = !!existingChallengeProgress;
+    const isPratice = !!existingquestionProgress;
 
     if(isPratice){
         return {error: "practice"}

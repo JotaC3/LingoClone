@@ -1,17 +1,17 @@
-import { challengeOptions, challenges } from "@/db/schema"
+import { questionOptions, questions } from "@/db/schema"
 import { cn } from "@/lib/utils";
 import { Card } from "./card";
 
  type Props ={
-    options: typeof challengeOptions.$inferSelect[];
+    options: typeof questionOptions.$inferSelect[];
     onSelect: (id: number) => void;
     status: "correct" | "wrong" | "none";
     selectedOption?: number;
     disabled?: boolean;
-    type: typeof challenges.$inferSelect["type"];
+    type: typeof questions.$inferSelect["type"];
  };
 
- export const Challenge = ({options, onSelect, status, selectedOption, disabled, type}: Props) =>{
+ export const question = ({options, onSelect, status, selectedOption, disabled, type}: Props) =>{
     return (
         <div className={cn(
             "grid gap-2",

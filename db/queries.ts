@@ -9,7 +9,7 @@ import {
     lessons, 
     units, 
     userProgress,
-    challengeProgress,
+    questionProgress,
 } from "./schema";
 
 export const getuserProgress = cache(async() =>{
@@ -44,12 +44,12 @@ export const getUnits = cache(async () =>{
             lessons: {
                 orderBy: (lessons, {asc}) => [asc(lessons.order)],
                 with: {
-                    challenges: {
-                        orderBy: (challenges, {asc}) => [asc(challenges.order)],
+                    questions: {
+                        orderBy: (questions, {asc}) => [asc(questions.order)],
                         with: {
-                            challengeProgress: {
+                            questionProgress: {
                                 where: eq(
-                                    challengeProgress.userId,
+                                    questionProgress.userId,
                                     userId,
                                 ),
                             },
@@ -62,17 +62,17 @@ export const getUnits = cache(async () =>{
 
     const normalizedData = data.map((unit) => {
         const lessonsWitthCompletedStatus =unit.lessons.map((lesson) =>{
-            if(lesson.challenges.length === 0){
+            if(lesson.questions.length === 0){
                 return{...lesson, completed: false}
             }
 
-            const allCompletedChallenges = lesson.challenges.every((challenge) =>{
-                return challenge.challengeProgress
-                && challenge.challengeProgress.length > 0
-                &&challenge.challengeProgress.every((progress) => progress.completed); 
+            const allCompletedquestions = lesson.questions.every((question) =>{
+                return question.questionProgress
+                && question.questionProgress.length > 0
+                &&question.questionProgress.every((progress) => progress.completed); 
             });
 
-            return {...lesson, completed: allCompletedChallenges} 
+            return {...lesson, completed: allCompletedquestions} 
         });
         return{...unit, lessons: lessonsWitthCompletedStatus}
     });
@@ -112,10 +112,10 @@ export const  getCourseProgress = cache(async () =>{
                 orderBy: (lessons, { asc }) => [asc(lessons.order)],
                 with: {
                     unit: true,
-                    challenges: {
+                    questions: {
                         with:{
-                            challengeProgress: {
-                                where: eq(challengeProgress.userId, userId),
+                            questionProgress: {
+                                where: eq(questionProgress.userId, userId),
                             }
                         }
                     }
@@ -127,10 +127,10 @@ export const  getCourseProgress = cache(async () =>{
     const firstUncompletedLesson = unitsInActiveCourse
         .flatMap((unit) => unit.lessons)
         .find( (lesson) =>{
-            return lesson.challenges.some((challenge) =>{
-                return !challenge.challengeProgress 
-                || challenge.challengeProgress.length === 0 
-                || challenge.challengeProgress.some((progress) => progress.completed === false);
+            return lesson.questions.some((question) =>{
+                return !question.questionProgress 
+                || question.questionProgress.length === 0 
+                || question.questionProgress.some((progress) => progress.completed === false);
             });
         });
 
@@ -159,31 +159,31 @@ export const  getLesson = cache(async (id? : number)  =>{
     const data = await db.query.lessons.findFirst({
         where: eq(lessons.id, lessonId),
         with: {
-            challenges: {
-                orderBy: (challenges, {asc}) =>[asc(challenges.order)],
+            questions: {
+                orderBy: (questions, {asc}) =>[asc(questions.order)],
                 with: {
-                    challengeOptions: true,
-                    challengeProgress: {
-                        where: eq(challengeProgress.userId, userId)
+                    questionOptions: true,
+                    questionProgress: {
+                        where: eq(questionProgress.userId, userId)
                     }
                 }
             }
         }
     });
 
-    if(!data || !data.challenges){
+    if(!data || !data.questions){
         return null;
     }
 
-    const normalizedChallenges = data.challenges.map((challenge) =>{
-        const completed = challenge.challengeProgress 
-            && challenge.challengeProgress.length > 0
-            && challenge.challengeProgress.every((progress) => progress.completed) ;
+    const normalizedquestions = data.questions.map((question) =>{
+        const completed = question.questionProgress 
+            && question.questionProgress.length > 0
+            && question.questionProgress.every((progress) => progress.completed) ;
 
-        return {...challenge, completed};
+        return {...question, completed};
     });
 
-    return{...data, challenges: normalizedChallenges}
+    return{...data, questions: normalizedquestions}
 });
 
 
@@ -199,11 +199,11 @@ export const getLessonPercentage = cache(async () =>{
         return 0;
     }
 
-    const completedChallenges = lesson.challenges
-        .filter((challenge) => challenge.completed);
+    const completedquestions = lesson.questions
+        .filter((question) => question.completed);
 
     const percentage = Math.round(
-        (completedChallenges.length / lesson.challenges.length) * 100,
+        (completedquestions.length / lesson.questions.length) * 100,
     );
 
     return percentage;

@@ -1,4 +1,4 @@
-import { challenges } from "@/db/schema";
+import { questions } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useCallback } from "react";
@@ -14,7 +14,7 @@ type Props= {
     onClick: () => void;
     disabled?: boolean;
     status?: "correct" | "wrong" | "none";
-    type: typeof challenges.$inferSelect["type"];
+    type: typeof questions.$inferSelect["type"];
 }
 
 export const Card = ({id, imageSrc, audioSrc, text, shortcut, selected, onClick, disabled, status, type}: Props) =>{

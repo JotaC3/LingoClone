@@ -1,12 +1,12 @@
 "use client";
 
-import { challengeOptions, challenges } from "@/db/schema";
+import { questionOptions, questions } from "@/db/schema";
 import { useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
-import { Challenge } from "./challenge";
+import { question } from "./question";
 import { Footer } from "./footer";
-import { upsertChallengeProgress } from "@/actions/challenge-progress";
+import { upsertquestionProgress } from "@/actions/question-progress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
 import { useAudio, useWindowSize, useMount } from "react-use";
@@ -22,9 +22,9 @@ type Props = {
     initialPercentage: number;
     initialHearts: number;
     initialLessonId: number;
-    initialLessonChallenges: (typeof challenges.$inferSelect & {
+    initialLessonquestions: (typeof questions.$inferSelect & {
         completed: boolean;
-        challengeOptions: typeof challengeOptions.$inferSelect[];
+        questionOptions: typeof questionOptions.$inferSelect[];
     })[];
     userSubscription: any; //TODO: REPLACE 
 };
@@ -33,7 +33,7 @@ export const Quiz = ({
     initialPercentage,
     initialHearts,
     initialLessonId,
-    initialLessonChallenges,
+    initialLessonquestions,
     userSubscription
 }: Props) => {
 
@@ -72,9 +72,9 @@ export const Quiz = ({
     const [percentage, setPercentage] = useState(() =>{
         return initialPercentage === 100 ? 0 : initialPercentage; 
     });
-    const[challenges] = useState(initialLessonChallenges); 
+    const[questions] = useState(initialLessonquestions); 
     const [activeIndex, setActiveIndex] = useState(() =>{
-        const uncompletedIndex = challenges.findIndex((challange) => !challange.completed);
+        const uncompletedIndex = questions.findIndex((challange) => !challange.completed);
 
         return uncompletedIndex === -1 ? 0 : uncompletedIndex;
     });
@@ -82,8 +82,8 @@ export const Quiz = ({
     const [selectedOption, setSelectedOption] = useState<number>();
     const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
-    const  challenge = challenges[activeIndex];
-    const options = challenge?.challengeOptions ?? []
+    const  question = questions[activeIndex];
+    const options = question?.questionOptions ?? []
 
     const onNext  = () =>{
         setActiveIndex((current) => current + 1)
@@ -118,7 +118,7 @@ export const Quiz = ({
         if(correctOption.id === selectedOption){
             startTransition(() =>{
 
-                upsertChallengeProgress(challenge.id)
+                upsertquestionProgress(question.id)
                  .then((response) =>{
                     if(response?.error === "hearts"){
                         openHeartsModal();
@@ -127,7 +127,7 @@ export const Quiz = ({
 
                     correctControls.play();
                     setStatus("correct");
-                    setPercentage((prev) => prev + 100 /challenges.length);
+                    setPercentage((prev) => prev + 100 /questions.length);
 
                     //caso onde o usuário está praticando/fazendo dnv
                     if(initialPercentage === 100){
@@ -138,7 +138,7 @@ export const Quiz = ({
             });
         } else{
             startTransition(() => {
-                reduceHearts(challenge.id)
+                reduceHearts(question.id)
                     .then((response) =>{
                         if(response?.error === 'hearts'){
                             openHeartsModal();
@@ -157,7 +157,7 @@ export const Quiz = ({
         }
     };
 
-    if(!challenge){
+    if(!question){
         return(
             <>
                 {finishAudio}
@@ -187,7 +187,7 @@ export const Quiz = ({
                      <div className="flex items-center gap-x-4 w-full">
                         <ResultCard 
                             variant='points'
-                            value={challenges.length * 10}
+                            value={questions.length * 10}
                         />
                         <ResultCard 
                             variant='hearts'
@@ -205,9 +205,9 @@ export const Quiz = ({
         );
     }
 
-    const title = challenge.type === 'ASSIST' 
+    const title = question.type === 'ASSIST' 
     ? 'Selecione a alternativa correta'
-    : challenge.question; 
+    : question.question; 
     
     return (
         <>
@@ -225,17 +225,17 @@ export const Quiz = ({
                             {title}
                         </h1>
                         <div>
-                            {challenge.type === 'ASSIST' &&(
-                                <QuestionBubble question ={challenge.question}/>
+                            {question.type === 'ASSIST' &&(
+                                <QuestionBubble question ={question.question}/>
                             )}
 
-                            <Challenge 
+                            <question 
                                 options = {options}
                                 onSelect= {onSelect}
                                 status = {status}
                                 selectedOption = {selectedOption}
                                 disabled ={pending}
-                                type = {challenge.type}
+                                type = {question.type}
                             />
                         </div>
                     </div>
