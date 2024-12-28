@@ -11,7 +11,7 @@ import { Card } from "./card";
     type: typeof questions.$inferSelect["type"];
  };
 
- export const question = ({options, onSelect, status, selectedOption, disabled, type}: Props) =>{
+ export const Question = ({options, onSelect, status, selectedOption, disabled, type}: Props) =>{
     return (
         <div className={cn(
             "grid gap-2",
@@ -33,6 +33,7 @@ import { Card } from "./card";
                     type = {type} 
                 />
             ))}
+            
         </div>
     )
  }

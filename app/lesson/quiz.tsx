@@ -4,9 +4,9 @@ import { questionOptions, questions } from "@/db/schema";
 import { useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
-import { question } from "./question";
+import { Question } from "./challenge";// TODO mudar para question
 import { Footer } from "./footer";
-import { upsertquestionProgress } from "@/actions/question-progress";
+import { upsertquestionProgress } from "@/actions/challenge-progress";// TODO mudar para question
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
 import { useAudio, useWindowSize, useMount } from "react-use";
@@ -229,7 +229,7 @@ export const Quiz = ({
                                 <QuestionBubble question ={question.question}/>
                             )}
 
-                            <question 
+                            <Question 
                                 options = {options}
                                 onSelect= {onSelect}
                                 status = {status}
@@ -237,6 +237,7 @@ export const Quiz = ({
                                 disabled ={pending}
                                 type = {question.type}
                             />
+                            
                         </div>
                     </div>
                 </div>
