@@ -1,12 +1,11 @@
 # Projeto de gameficacação do ensino de física
 
-## Aluno: 
-+ João Carlos Costa Carvalho
+## Contato: 
++ Nome: João Carlos Costa Carvalho
 
-## Contado
-+ https://www.linkedin.com/in/joão-carlos-costa-carvalho/
++ Linkedin: https://www.linkedin.com/in/joão-carlos-costa-carvalho/
 
-+ @j.carlos09
++ Instagram: @j.carlos09
 
 ##           Avisos
 
