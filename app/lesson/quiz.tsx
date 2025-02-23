@@ -4,43 +4,43 @@ import { questionOptions, questions } from "@/db/schema";
 import { useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
-import { Question } from "./question";// TODO mudar para question
+import { Question } from "./question";
 import { Footer } from "./footer";
-import { upsertquestionProgress } from "@/actions/challenge-progress";// TODO mudar para question
+import { upsertquestionProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
-import { reduceHearts } from "@/actions/user-progress";
+import { reducePoints } from "@/actions/user-progress";
 import { useAudio, useWindowSize, useMount } from "react-use";
 import Image from "next/image";
 import { Result } from "postcss";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
 import Confetti from 'react-confetti'
-import { useHeartsModal } from "@/store/use-hearts-modal";
+//import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
 import { getuserProgress } from "@/db/queries";
 
 type Props = {
     initialPercentage: number;
-    initialHearts: number;
+    //initialHearts: number;
     initialLessonId: number;
     initialPoints: number;
     initialLessonquestions: (typeof questions.$inferSelect & {
         completed: boolean;
         questionOptions: typeof questionOptions.$inferSelect[];
     })[];
-    userSubscription: any; //TODO: REPLACE 
+    //userSubscription: any; 
 };
 
 export const Quiz = ({
     initialPercentage,
-    initialHearts,
+    //initialHearts,
     initialPoints,
     initialLessonId,
     initialLessonquestions,
-    userSubscription
+    //userSubscription
 }: Props) => {
 
-    const { open: openHeartsModal } = useHeartsModal();
+    //const { open: openHeartsModal } = useHeartsModal();
     const { open: openPracticeModal } = usePracticeModal();
 
     useMount(() => {
@@ -72,7 +72,7 @@ export const Quiz = ({
 
     const [lessonId] = useState(initialLessonId)
     const [pending, startTransition] = useTransition();
-    const [hearts, setHearts] = useState(initialHearts);
+    //const [hearts, setHearts] = useState(initialHearts);
     const [percentage, setPercentage] = useState(() => {
         return initialPercentage === 100 ? 0 : initialPercentage;
     });
@@ -124,37 +124,38 @@ export const Quiz = ({
 
                 upsertquestionProgress(question.id)
                     .then((response) => {
-                        if (response?.error === "hearts") {
+                        /* if (response?.error === "hearts") {
                             openHeartsModal();
                             return
-                        }
+                        } */
 
                         correctControls.play();
                         setStatus("correct");
                         setPercentage((prev) => prev + 100 / questions.length);
 
                         //caso onde o usuário está praticando/fazendo dnv
-                        if (initialPercentage === 100) {
+                        /* if (initialPercentage === 100) {
                             setHearts((prev) => Math.min(prev + 1, 5))
-                        }
+                        } */
                     }).catch(() => toast.error("Algo deu errado, por favor tente"))
 
             });
         } else {
             startTransition(() => {
-                reduceHearts(question.id)
+                
+                reducePoints(question.id)
                     .then((response) => {
-                        if (response?.error === 'hearts') {
+                        /* if (response?.error === 'hearts') {
                             openHeartsModal();
                             return
-                        }
+                        } */
 
                         incorrectControls.play(); +
                             setStatus("wrong");
 
-                        if (!response?.error) {
+                        /* if (!response?.error) {
                             setHearts((prev) => Math.max(prev - 1, 0));
-                        }
+                        } */
                     }).catch(() => toast.error("Something went wrong."))
             })
 
@@ -215,9 +216,9 @@ export const Quiz = ({
             {incorrectAudio}
             {correctAudio}
             <Header
-                hearts={hearts}
+                //hearts={hearts}
                 percentage={percentage}
-                hasActiveSubscription={!!userSubscription?.isActive}
+                //hasActiveSubscription={!!userSubscription?.isActive}
             />
 
             <div className="flex-1">

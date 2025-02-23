@@ -40,10 +40,10 @@ const LessonPage = async () => {
         <Quiz 
             initialLessonId={lesson.id}
             initialLessonquestions={processedQuestions} // Passar apenas as questões processadas
-            initialHearts={userProgress.hearts}
+            //initialHearts={userProgress.hearts}
             initialPoints={userProgress.points}
             initialPercentage={initialPrcentage} // Progresso baseado em todas as questões
-            userSubscription={null} // TODO: ADD USER SUBSCRIPTION
+           // userSubscription={null} 
         />
     );
 };

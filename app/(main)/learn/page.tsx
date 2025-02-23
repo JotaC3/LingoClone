@@ -41,7 +41,7 @@ const LearnPage = async () => {
             <StickyWrapper>
                 <UserProgress
                     activeCourse={userProgress.activeCourse}
-                    hearts={userProgress.hearts}
+                    //hearts={userProgress.hearts}
                     points={userProgress.points}
                     hasActiveSubscriprion={false}
                 />

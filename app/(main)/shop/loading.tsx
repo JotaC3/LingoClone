@@ -1,4 +1,4 @@
-import { Loader } from "lucide-react";
+/* import { Loader } from "lucide-react";
 
 const Loading= () =>{
     return(
@@ -8,4 +8,4 @@ const Loading= () =>{
     )
 }
 
-export default Loading;
+export default Loading; */

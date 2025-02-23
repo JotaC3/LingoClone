@@ -87,9 +87,9 @@ export const upsertquestionProgress = async (questionId: number) => {
 
     // Atualizar progresso do usuário (incrementar pontos)
     await db.update(userProgress).set({
-        hearts: isPracticing
+        /* hearts: isPracticing
             ? Math.min(currentUserProgress.hearts + 1, 5) 
-            : currentUserProgress.hearts,
+            : currentUserProgress.hearts, */
         points: currentUserProgress.points + 10,
     }).where(eq(userProgress.userId, userId));
 

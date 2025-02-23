@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import Link from "next/link"
 
+//Não é utilizado, porém foi mantido para caso de uso futuro
 export const Promo = () =>{
     return(
         <div className="border-2 rounded-xl p-4 space-y-4">

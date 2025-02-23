@@ -92,7 +92,7 @@ export const questionsOptionsRelations = relations(questionOptions, ({one}) => (
 
 export const questionProgress = pgTable("question_progress", {
     id: serial("id").primaryKey(),
-    userId: text('user_id').notNull(), // TODO CONFIRMAR Q ISSO NÃO QUEBRA
+    userId: text('user_id').notNull(),
     questionId: integer('question_id').references(() => questions.id, {onDelete: 'cascade'}).notNull(),
     //text: text("text").notNull(),
     completed: boolean('completed').notNull().default(false)
@@ -110,7 +110,7 @@ export const userProgress = pgTable("user_progress", {
     userName: text("user_name").notNull().default("User"),
     userImageSrc: text("user_image_src").notNull().default("/mascot.svg"),
     activeCourseId: integer("active_course_id").references(() => courses.id, {onDelete: "cascade"}),
-    hearts: integer("hearts").notNull().default(5),
+    //hearts: integer("hearts").notNull().default(5),
     points: integer("points").notNull().default(0),
 });   
 

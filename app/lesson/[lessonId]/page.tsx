@@ -33,9 +33,10 @@ const LessonIdPage = async ({params}: Props) => {
             <Quiz 
                 initialLessonId={lesson.id}
                 initialLessonquestions={lesson.questions}
-                initialHearts={userProgress.hearts}
+                //initialHearts={userProgress.hearts}
+                initialPoints={userProgress.points}
                 initialPercentage={initialPrcentage}
-                userSubscription={null} //TODO: ADD USER SUBSCRIPTION
+                //userSubscription={null}
                 />
         
         </>

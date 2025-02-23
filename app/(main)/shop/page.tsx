@@ -1,4 +1,4 @@
-import { FeedWrapper } from "@/components/feed-wrapper";
+/* import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getuserProgress } from "@/db/queries";
@@ -58,4 +58,4 @@ const ShopPage = async () => {
     );
 };
 
-export default ShopPage;
+export default ShopPage; */

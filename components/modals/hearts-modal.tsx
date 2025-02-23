@@ -1,4 +1,4 @@
-"use client"
+/* "use client"
 import Image  from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,6 @@ import {
 import { Button } from "../ui/button";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { DialogTitle } from '@radix-ui/react-dialog';
-
 
 export const HeartsModal = () => {
     const router = useRouter();
@@ -63,4 +62,4 @@ export const HeartsModal = () => {
         </Dialog>
     )
 
-}
+} */

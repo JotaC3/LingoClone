@@ -1,6 +1,6 @@
-"use client";
+/* "use client";
 
-import { refillHearts } from "@/actions/user-progress";
+//import { refillHearts } from "@/actions/user-progress";
 import { Button } from "@/components/ui/button";
 import { pointsToRefil } from "@/constants";
 import Image from "next/image";
@@ -65,4 +65,4 @@ export const Items = ({hearts, points, hasActiveSubscription}: Props) =>{
             </div>
         </ul >
     )
-}
+} */

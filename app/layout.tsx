@@ -4,7 +4,7 @@ import "./globals.css";
 import { ClerkProvider, SignedIn, SignedOut, SignIn  } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { ExitModal } from "@/components/modals/exit-modal";
-import { HeartsModal } from "@/components/modals/hearts-modal";
+//import { HeartsModal } from "@/components/modals/hearts-modal";
 import { PracticeModal } from "@/components/modals/practice-modal";
 
 
@@ -26,7 +26,7 @@ export default function RootLayout({
         <body className={font.className}>
           <Toaster />
           <ExitModal />
-          <HeartsModal />
+          {/* <HeartsModal /> */}
           <PracticeModal />
           {children}
         </body>

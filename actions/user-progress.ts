@@ -55,7 +55,8 @@ export const upsertUserProgress = async (courseId: number) =>{
     redirect("/learn");
 };
 
-export const reduceHearts = async (questionId: number) =>{
+//TODO: Mudar o nome da função reducePoints
+export const reducePoints = async (questionId: number) =>{
     const {userId} = await auth();
 
     if(!userId){
@@ -90,9 +91,9 @@ export const reduceHearts = async (questionId: number) =>{
         throw new Error("UserProgress not found");
     }
 
-    if(currentUserProgress.hearts === 0){
+    /* if(currentUserProgress.hearts === 0){
         return {error: "hearts"};
-    }
+    } */
 
     if (currentUserProgress.points < 5){
         return {error: "points"};
@@ -110,7 +111,8 @@ export const reduceHearts = async (questionId: number) =>{
     revalidatePath(`/lesson/${lessonId}`);
 };
 
-export const refillHearts = async () =>{
+
+/* export const refillHearts = async () =>{
     const currentUserProgress = await getuserProgress();
     if(!currentUserProgress){
         throw new Error("User progress not found"); 
@@ -133,4 +135,4 @@ export const refillHearts = async () =>{
     revalidatePath('/learn');
     revalidatePath('/quests');
     revalidatePath('/leaderboard');
-}
+} */
