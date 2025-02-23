@@ -49,16 +49,23 @@ const main = async () => {
             {
                 id: 1,
                 courseId: 1, // espanhool
-                title: 'Unidade 2',
-                Description: 'Astronomia',
+                title: 'Unidade 1',
+                Description: 'Questões FÁCEIS',
                 order: 1
             },
             {
                 id: 2,
                 courseId: 1, // espanhool
                 title: 'Unidade 2',
-                Description: 'Astronomia 2',
+                Description: 'Questões MÉDIAS',
                 order: 2
+            },
+            {
+                id: 3,
+                courseId: 1, // espanhool
+                title: 'Unidade 3',
+                Description: 'Questões DIFÍCEIS',
+                order: 3
             }
         ]);
 
@@ -83,37 +90,37 @@ const main = async () => {
             },
             {
                 id: 4,
-                unitId: 1,
+                unitId: 2,
                 order: 4,
                 title: 'Quarta Estrela',
             },
             {
                 id: 5,
-                unitId: 1,
+                unitId: 2,
                 order: 5,
                 title: 'Quinta Estrela',
             },
             {
                 id: 6,
-                unitId: 1,
+                unitId: 2,
                 order: 6,
                 title: 'Sexta Estrela',
             },
             {
                 id: 7,
-                unitId: 1,
+                unitId: 3,
                 order: 7,
                 title: 'Sexta Estrela',
             },
             {
                 id: 8,
-                unitId: 1,
+                unitId: 3,
                 order: 8,
                 title: 'Sexta Estrela',
             },
             {
                 id: 9,
-                unitId: 1,
+                unitId: 3,
                 order: 9,
                 title: 'Sexta Estrela',
             },
@@ -130,7 +137,7 @@ const main = async () => {
                 comment: 'A primeira lei de Kepler afirma que os planetas descrevem órbitas elípticas com o Sol em um dos focos.'
             },
             {
-                id: 2,
+                id: 2,  
                 lessonId: 1,
                 type: 'SELCT',
                 order: 1,

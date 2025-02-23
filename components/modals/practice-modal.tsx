@@ -30,13 +30,13 @@ export const PracticeModal = () => {
             <DialogContent className='max-w-md'>
                 <DialogHeader>
                     <div className='flex items-center w-full justify-center mb-5'>
-                        <Image src='/heart.svg' alt='Heart' height={100} width={100}  />
+                        <Image src='/points.svg' alt='Heart' height={100} width={100}  />
                     </div>
                     <DialogTitle className='text-center font-bold text-2xl'>
-                        Lissão de treino
+                        Lição de treino
                     </DialogTitle>
                     <DialogDescription className='text-center text-base'>
-                        Use lições de prática para ganhar mais pontos e vidas. Você nã pode perder corações, nem vidas aqui
+                        Use lições de prática para ganhar mais pontos. Você não pode perder pontos aqui
                     </DialogDescription>
                 </DialogHeader>
 

@@ -94,8 +94,13 @@ export const reduceHearts = async (questionId: number) =>{
         return {error: "hearts"};
     }
 
+    if (currentUserProgress.points < 5){
+        return {error: "points"};
+        
+    }
     await db.update(userProgress).set({
-        hearts: Math.max(currentUserProgress.hearts -1, 0)
+        //hearts: Math.max(currentUserProgress.hearts -1, 0),
+        points: Math.max(currentUserProgress.points -5, 0),
     }).where(eq(userProgress.userId, userId));
 
     revalidatePath("/shop");
