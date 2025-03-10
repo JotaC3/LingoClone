@@ -703,7 +703,7 @@ const main = async () => {
                 imageSrc: null,
                 comment: 'A terceira lei de Kepler (lei dos períodos) afirma que os quadrados dos períodos T de revolução dos planetas (tempo que demora para efetuar uma volta completa em torno do Sol) são proporcionais aos cubos das suas distâncias médias R ao Sol. Este enunciado não se refere ao período de rotação (em torno de si mesmo, dia do planeta). Cada planeta tem um dia de duração própria, que dependerá de sua velocidade de rotação e de seu diâmetro.'
             },
-            {
+            /* {
                 id: 65,
                 lessonId: 3,
                 type: 'SELCT',
@@ -800,7 +800,7 @@ const main = async () => {
                 question: '',
                 imageSrc: null,
                 comment: ''
-            },
+            }, */
             {
                 id: 76,
                 lessonId: 4,
@@ -1080,7 +1080,7 @@ const main = async () => {
                 imageSrc: null,
                 comment: 'A Segunda Lei de Kepler é crucial para entender como a velocidade de um planeta varia ao longo de sua órbita elíptica: ela mostra que a velocidade do planeta depende de sua distância ao Sol, sendo maior no periélio e menor no afélio.'
             },
-            {
+            /* {
                 id: 107,
                 lessonId: 5,
                 type: 'SELCT',
@@ -1475,7 +1475,7 @@ const main = async () => {
                 question: '',
                 imageSrc: null,
                 comment: null
-            },
+            }, */
             {
                 id: 151,
                 lessonId: 7,
@@ -1584,7 +1584,7 @@ const main = async () => {
                 imageSrc: null,
                 comment: null
             },
-            {
+            /* {
                 id: 163,
                 lessonId: 7,
                 type: 'SELCT',
@@ -1880,7 +1880,7 @@ const main = async () => {
                 question: '',
                 imageSrc: null,
                 comment: null
-            }
+            } */
 
         ]);
         //.....................................................
@@ -2014,7 +2014,7 @@ const main = async () => {
             { id: 126, questionId: 63, correct: false, text: 'Falso', imageSrc: null },
             { id: 127, questionId: 64, correct: false, text: 'Verdadeiro', imageSrc: null },
             { id: 128, questionId: 64, correct: true, text: 'Falso', imageSrc: 'Explicação T' },
-            { id: 129, questionId: 65, correct: false, text: 'Verdadeiro', imageSrc: null },
+           /*  { id: 129, questionId: 65, correct: false, text: 'Verdadeiro', imageSrc: null },
             { id: 130, questionId: 65, correct: true, text: 'Falso', imageSrc: null },
             { id: 131, questionId: 66, correct: false, text: 'Verdadeiro', imageSrc: null },
             { id: 132, questionId: 66, correct: true, text: 'Falso', imageSrc: null },
@@ -2035,7 +2035,7 @@ const main = async () => {
             { id: 147, questionId: 74, correct: false, text: 'Verdadeiro', imageSrc: null },
             { id: 148, questionId: 74, correct: true, text: 'Falso', imageSrc: null },
             { id: 149, questionId: 75, correct: false, text: 'Verdadeiro', imageSrc: null },
-            { id: 150, questionId: 75, correct: true, text: 'Falso', imageSrc: null },
+            { id: 150, questionId: 75, correct: true, text: 'Falso', imageSrc: null }, */
             { id: 151, questionId: 76, correct: false, text: 'lei da gravitação universal, lei das áreas e lei dos períodos.', imageSrc: null },
             { id: 152, questionId: 76, correct: true, text: 'lei das órbitas elípticas, lei das áreas e lei dos períodos.', imageSrc: null },
             { id: 153, questionId: 76, correct: false, text: 'lei das órbitas elípticas, lei das áreas e lei da gravitação universal.', imageSrc: null },
@@ -2164,7 +2164,7 @@ const main = async () => {
             { id: 276, questionId: 106, correct: false, text: 'Porque ela mostra que a órbita dos planetas é perfeitamente circular.', imageSrc: null },
             { id: 277, questionId: 106, correct: true, text: 'Porque ela revela como a velocidade dos planetas varia dependendo da sua distância ao Sol.', imageSrc: null },
             { id: 278, questionId: 106, correct: false, text: 'Porque ela prevê o tempo que um planeta leva para completar uma órbita.', imageSrc: null },
-            { id: 279, questionId: 107, correct: false, text: '', imageSrc: null },
+            /* { id: 279, questionId: 107, correct: false, text: '', imageSrc: null },
             { id: 280, questionId: 107, correct: false, text: '', imageSrc: null },
             { id: 281, questionId: 107, correct: true, text: '', imageSrc: null },
             { id: 282, questionId: 107, correct: false, text: '', imageSrc: null },
@@ -2335,7 +2335,7 @@ const main = async () => {
             { id: 447, questionId: 150, correct: false, text: '', imageSrc: null },
             { id: 448, questionId: 150, correct: false, text: '', imageSrc: null },
             { id: 449, questionId: 150, correct: true, text: '', imageSrc: null },
-            { id: 450, questionId: 150, correct: false, text: '', imageSrc: null },
+            { id: 450, questionId: 150, correct: false, text: '', imageSrc: null }, */
             { id: 451, questionId: 152, correct: false, text: 'A velocidade do satélite é sempre constante.', imageSrc: null },
             { id: 452, questionId: 152, correct: true, text: 'A velocidade do satélite cresce à medida que o satélite caminha ao longo da curva ABC.', imageSrc: null },
             { id: 453, questionId: 152, correct: false, text: 'A velocidade do ponto B é máxima.', imageSrc: null },

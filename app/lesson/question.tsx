@@ -17,7 +17,7 @@ import { Card } from "./card";
         <div className={cn(
             "grid gap-2",
             type === "ASSIST" && "grid-cols-1",
-            type ==="SELCT" && "grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(0,1fr))]"
+            type ==="SELCT" && "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"//"grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(0,1fr))]"
         )}>
             
             {options.map((option, i)=>(
