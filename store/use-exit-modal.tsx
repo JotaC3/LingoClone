@@ -10,4 +10,4 @@ export const useExitModal = create<ExitModalstate>((set) =>({
     isOpen: false, 
     open: () => set({isOpen: true}),
     close: () => set({isOpen: false}),
-}));
+}));    

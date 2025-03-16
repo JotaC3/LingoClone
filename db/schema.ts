@@ -5,8 +5,6 @@ import { Questrial } from "next/font/google";
 import { comment } from "postcss";
 import { title } from "process";
 
-//COMANDO PARA FAZER O PUSH DAS TABELAS: npx drizzle-kit push
-
 export const courses = pgTable("courses", {
     id: serial("id").primaryKey(),
     title: text("title").notNull(),
@@ -121,11 +119,3 @@ export const userProgressRelations = relations(userProgress, ({one}) => ({
     }),
 }));
 
-/* a partir do 8:35:00 do vídeo Build a Duolingo Clone With Nextjs, React, Drizzle, Stripe (2024)
-
-export const userSubscription = pgTable('user_subscription',{
-     id:serial('id').primaryKey(),
-     userId: serial('user_id').notNull().unique(),
-     stripeCustomerId: text('stripe_costumer_id').notNull().unique(),
-     
-}) */
