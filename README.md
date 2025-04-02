@@ -1,5 +1,3 @@
-## Link do vídeo
-+ https://youtu.be/Ju1LOSpWyTo?si=_7nYYvSunflMiHIM
 
 <!-- # Projeto de gameficacação do ensino de física
 
